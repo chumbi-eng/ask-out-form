@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Go Out With Me? 💖</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffebf0;
+            padding: 50px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            display: inline-block;
+            text-align: left;
+        }
+        label {
+            font-size: 18px;
+            font-weight: bold;
+            display: block;
+            margin: 10px 0 5px;
+        }
+        input, select, button {
+            font-size: 16px;
+            padding: 8px;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        button {
+            background-color: #ff5c8a;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff3366;
+        }
+        #result {
+            font-size: 20px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Will You Go Out With Me? 💘</h2>
+
+    <form id="dateForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+        <label for="dating">Are you dating someone?</label>
+        <select id="dating" name="dating">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+        </select>
+
+        <label for="courting">Are you courting someone?</label>
+        <select id="courting" name="courting">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+        </select>
+
+        <label for="goingOut">Will you go out with me?</label>
+        <select id="goingOut" name="goingOut">
+            <option value="yes">Yes! 💕</option>
+            <option value="maybe">Maybe 🤔</option>
+            <option value="no">No, sorry 😢</option>
+        </select>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        document.getElementById("dateForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            let name = document.getElementById("name").value;
+            let dating = document.getElementById("dating").value;
+            let courting = document.getElementById("courting").value;
+            let goingOut = document.getElementById("goingOut").value;
+            let resultText = "";
+
+            if (dating === "yes" || courting === "yes") {
+                resultText = `😔 Sorry, ${name}, looks like you're taken.`;
+            } else if (goingOut === "yes") {
+                resultText = `😍 Yay, ${name}! Let's plan our date! ❤️`;
+            } else if (goingOut === "maybe") {
+                resultText = `🤔 Hmmm, ${name}. I'll try to convince you!`;
+            } else {
+                resultText = `😢 Oh no, ${name}! Maybe next time.`;
+            }
+
+            document.getElementById("result").innerHTML = resultText;
+        });
+    </script>
+
+</body>
+</html>
